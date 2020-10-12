@@ -1,6 +1,6 @@
 {
   "function": {
-    "pay": {
+    "paymentFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
@@ -8,13 +8,13 @@
     }
   },
   "api": {
-    "apiPay": {
+    "paymentAPI": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "pay",
+          "resourceName": "paymentFunction",
           "attributes": [
             "Name",
             "Arn"
