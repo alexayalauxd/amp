@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/items",
+            "lambdaFunction": "pay",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/items"
+        }
+    ],
+    "resourceName": "apiPay",
+    "apiName": "apiPay",
+    "functionArns": [
+        {
+            "lambdaFunction": "pay"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-amp-dev-115651-authRole",
+        "unAuthRoleName": "amplify-amp-dev-115651-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "pay",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
