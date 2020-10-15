@@ -12,6 +12,7 @@ See the License for the specific language governing permissions and limitations 
 var express = require('express')
 var bodyParser = require('body-parser')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+const stripe = require("stripe")("sk_test_51HYwv2Eqyr7A4WY0HecKH1tV6CCMAQ4NuGY7xacmonFk8BadbLUiZbV0CKGrIbNnOWhbHNNJeetliof5pPk0OBdu007VAzFieh");
 
 // declare a new express app
 var app = express()
@@ -45,6 +46,16 @@ app.get('/items/*', function(req, res) {
 ****************************/
 
 app.post('/items', function(req, res) {
+  const { items } = req.body;
+  // Crear un PaymentIntent con el monto y la moneda
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: calculateOrderAmount(items),
+    currency: "mxn"
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret
+  });
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });

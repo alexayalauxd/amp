@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="global.css" />
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+
     <script src="main.bundle.js"></script>
     <title>payment</title>
 </head>
 <body>
-    
+    <form id="payment-form">
+        <div id="card-element"></div>
+        <button id="submit">
+          <div class="spinner hidden" id="spinner"></div>
+          <span id="button-text">Pay</span>
+        </button>
+        <p id="card-error" role="alert"></p>
+        <p class="result-message hidden">
+          Pago exitoso, vea el resultado en
+          <a href="" target="_blank">Stripe dashboard.</a> Actualice la página para realizar un nuevo pago.
+        </p>
+      </form>
 </body>
 </html>
